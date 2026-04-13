@@ -158,40 +158,29 @@
                 -webkit-overflow-scrolling: touch; /* Melhora o deslize no iPhone */
             }
 
-            /* Container que segura tudo */
-            .tabela-wrapper {
-                width: 100%;
-                overflow-x: auto; /* Habilita o scroll lateral */
-                border: 1px solid #dee2e6;
-                border-radius: 4px;
-                background: #fff;
-                position: relative;
-            }
-
             table {
-                min-width: 600px; /* Garante que a tabela seja larga */
-                border: none !important;
-            }
-
-            /* O SEGREDO: Estilo da nova div de aviso */
-            .aviso-deslize {
-                display: block;
-                position: sticky; /* Faz o aviso ficar fixo na tela do celular */
-                left: 0;
-                right: 0;
-                width: 100%; /* Ocupa a largura do visor do celular */
-                padding: 10px;
-                background: #f8f9fa;
-                color: #777;
-                font-size: 11px;
-                text-align: center;
-                border-top: 1px solid #dee2e6;
-                box-sizing: border-box;
+                min-width: 600px; /* Define um tamanho mínimo para a tabela respirar dentro do scroll */
             }
         }
 
         @media (max-width: 480px) {
             .logo-text { display: none; } /* Esconde o texto e deixa só o ícone em telas muito pequenas */
+        }
+
+        /* Sombra sutil que indica que tem mais conteúdo para a direita */
+        #secao-historico {
+            position: relative;
+            border: 1px solid #dee2e6;
+        }
+
+        #secao-historico::after {
+            content: '↔ Deslize para ver todas as informações.';
+            display: block;
+            text-align: center;
+            font-size: 10px;
+            color: #999;
+            padding: 5px;
+            /*background: #f8f9fa;*/
         }
 
     </style>
@@ -275,8 +264,6 @@
                 <thead><tr><th>Serviço</th><th>Link</th><th>Data</th><th>Qtd</th><th>Valor</th><th>Status</th></tr></thead>
                 <tbody></tbody>
             </table>
-            <!-- Nova div de aviso real -->
-            <div class="aviso-deslize">↔ Deslize para ver todas as informações.</div>
         </div>
     </div>
 </div>
