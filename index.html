@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Painel de Serviços</title>
     <link rel="icon" type="image/png" href="icone.png">
     <style>
@@ -98,6 +98,20 @@
             body {
                 overflow-x: hidden;
                 width: 100%;
+            }
+
+            /* Impede o zoom automático ao focar nos campos */
+            select, 
+            input[type="tel"], 
+            input[type="password"], 
+            input[type="text"], 
+            input[type="number"] {
+                font-size: 16px !important; /* Tamanho mínimo para evitar zoom no mobile */
+            }
+
+            /* Ajuste adicional para o campo de senha não ficar com as bolinhas minúsculas */
+            input[type="password"] {
+                font-size: 16px !important;
             }
 
             /* Reduz o espaçamento lateral do conteúdo principal */
