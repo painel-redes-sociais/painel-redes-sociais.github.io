@@ -68,6 +68,70 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
+        .btn-cadastro {
+            width: 100%;
+            background-color: #27ae60; /* Verde para diferenciar do entrar */
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-cadastro:hover {
+            background-color: #219150;
+        }
+
+        /* Garante que os botões tenham o mesmo tamanho no flex */
+        .btn-login, .btn-cadastro {
+            flex: 1;
+            margin-top: 0 !important; /* Remove o margin superior para alinhar perfeitamente */
+        }
+
+        /* --- RESPONSIVIDADE (CELULAR) --- */
+        @media (max-width: 600px) {
+            /* Navbar: Esconde o logo para sobrar espaço ou diminui o texto */
+            .nav-logo { font-size: 14px; margin-right: 10px; }
+            .nav-logo img { height: 25px; }
+
+            /* Menu: Diminui o espaçamento entre itens */
+            .nav-item { padding: 0 10px; font-size: 12px; }
+            
+            /* Saldo: Diminui um pouco o balão */
+            .nav-balance { padding: 4px 10px; font-size: 11px; }
+
+            /* Container: Ocupa quase toda a largura da tela */
+            .container { padding: 20px 15px; width: 95%; }
+
+            /* Botões Lado a Lado: No celular ficam melhor um embaixo do outro */
+            .login-container div[style*="display: flex"] {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            /* Tabela: Ativa o scroll lateral para não quebrar o layout */
+            #secao-historico {
+                overflow-x: auto;
+                display: block;
+            }
+            
+            table {
+                min-width: 500px; /* Garante que a tabela não esmague o texto */
+            }
+
+            /* Ajuste de fontes gerais */
+            h3 { font-size: 18px; }
+            .user-login { font-size: 11px; }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text { display: none; } /* Esconde o texto e deixa só o ícone em telas muito pequenas */
+        }
+
+
     </style>
 </head>
 <body>
@@ -75,21 +139,32 @@
 <div id="tela-login">
     <div class="login-container">
         <div class="logo-login"><img src="icone.png">Serviços Redes Sociais</div>
+        
         <div class="form-group" style="text-align:left">
             <label>Login telefone:</label>
             <input type="tel" id="inputTel" placeholder="(00) 00000-0000">
         </div>
+        
         <div class="form-group" style="text-align:left">
             <label>Senha:</label>
             <input type="password" id="inputSenha" placeholder="Digite sua senha">
         </div>
-        <button class="btn-login" onclick="fazerLogin()">Entrar</button>
+
+        <!-- Container para os botões ficarem na mesma linha -->
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <button class="btn-login" onclick="fazerLogin()">Entrar</button>
+            <button class="btn-cadastro" onclick="solicitarCadastro()">Cadastrar</button>
+        </div>
     </div>
 </div>
 
+
 <div id="painel-principal">
     <div class="navbar">
-        <div class="nav-logo"><img src="icone.png">Painel de Serviços</div>
+        <div class="nav-logo">
+            <img src="icone.png"> 
+            <span class="logo-text">Painel de Serviços</span> <!-- Coloque o texto dentro de um span -->
+        </div>
         <div class="nav-menu">
             <div class="nav-item active" onclick="trocarAba('pedido')">Pedido</div>
             <div class="nav-item" onclick="trocarAba('historico')">Histórico</div>
@@ -427,6 +502,14 @@
 
         } catch(e) { console.log("Erro ao carregar histórico"); }
     }
+
+    function solicitarCadastro() {
+        const seuNumero = "5563992451894"; 
+        const mensagem = "Olá, gostaria de realizar meu cadastro no painel de serviços.";
+        const url = "https://wa.me/" + seuNumero + "?text=" + encodeURIComponent(mensagem);
+        window.open(url, '_blank');
+    }
+
 
 </script>
 </body>
