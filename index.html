@@ -92,44 +92,68 @@
         }
 
         /* --- RESPONSIVIDADE (CELULAR) --- */
+        /* --- AJUSTE FINAL DE RESPONSIVIDADE --- */
         @media (max-width: 600px) {
-            /* Navbar: Esconde o logo para sobrar espaço ou diminui o texto */
-            .nav-logo { font-size: 14px; margin-right: 10px; }
-            .nav-logo img { height: 25px; }
-
-            /* Menu: Diminui o espaçamento entre itens */
-            .nav-item { padding: 0 10px; font-size: 12px; }
-            
-            /* Saldo: Diminui um pouco o balão */
-            .nav-balance { padding: 4px 10px; font-size: 11px; }
-
-            /* Container: Ocupa quase toda a largura da tela */
-            .container { padding: 20px 15px; width: 95%; }
-
-            /* Botões Lado a Lado: No celular ficam melhor um embaixo do outro */
-            .login-container div[style*="display: flex"] {
-                flex-direction: column;
-                gap: 10px;
+            /* Impede que o corpo da página crie barras de rolagem desnecessárias */
+            body {
+                overflow-x: hidden;
+                width: 100%;
             }
 
-            /* Tabela: Ativa o scroll lateral para não quebrar o layout */
+            /* Reduz o espaçamento lateral do conteúdo principal */
+            .main-content {
+                padding: 15px 10px; /* Diminuído para não apertar o container */
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            /* Faz o container ocupar a largura total disponível sem bordas sobrando */
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 20px 15px;
+                box-sizing: border-box;
+                border-radius: 0; /* Opcional: remove arredondamento no celular para ganhar espaço */
+                box-shadow: none; /* Remove sombra para deixar o visual mais limpo no mobile */
+            }
+
+            /* Ajuste na Navbar para não encavalar */
+            .navbar {
+                padding: 0 10px;
+                justify-content: space-between;
+            }
+
+            .nav-item {
+                padding: 0 8px; /* Menos espaço entre os botões do menu */
+                font-size: 13px;
+            }
+
+            .nav-logo {
+                margin-right: 5px;
+            }
+
+            .nav-logo span {
+                display: none; /* Esconde o texto do logo, deixa só o ícone se a tela for muito pequena */
+            }
+
+            /* Garante que a tabela de histórico seja deslizável e não corte */
             #secao-historico {
-                overflow-x: auto;
+                width: 100%;
                 display: block;
-            }
-            
-            table {
-                min-width: 500px; /* Garante que a tabela não esmague o texto */
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch; /* Melhora o deslize no iPhone */
             }
 
-            /* Ajuste de fontes gerais */
-            h3 { font-size: 18px; }
-            .user-login { font-size: 11px; }
+            table {
+                min-width: 550px; /* Define um tamanho mínimo para a tabela respirar dentro do scroll */
+            }
         }
 
         @media (max-width: 480px) {
             .logo-text { display: none; } /* Esconde o texto e deixa só o ícone em telas muito pequenas */
         }
+
+
 
 
     </style>
